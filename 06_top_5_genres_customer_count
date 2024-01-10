@@ -1,3 +1,4 @@
+
 Step 1 - find the customer IDs of the top 5 customers from overall.
 
 SELECT  
