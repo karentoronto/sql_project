@@ -1,0 +1,26 @@
+Step 1 - find the customer IDs of the top 5 customers from overall.
+
+SELECT  
+	D.customer_id,D.first_name, D.last_name, B.city,C.country,
+	SUM(E.amount) AS Total_Revenue
+FROM ADDRESS A
+INNER JOIN CITY B ON A.CITY_ID = B.CITY_ID
+INNER JOIN COUNTRY C ON B.COUNTRY_ID = C.COUNTRY_ID
+INNER JOIN customer D ON A.address_id= D.address_id
+INNER JOIN payment E ON D.customer_id = E.customer_id
+GROUP BY B.city, C.country, D.customer_id
+ORDER BY Total_Revenue DESC
+LIMIT 5
+
+Step 2  Find the top 5 genres of these customers using the customer IDs
+SELECT F.name AS genre, COUNT(B.rental_id) AS frequency
+FROM customer A 
+INNER JOIN payment B ON A.customer_id = B.customer_id
+INNER JOIN rental C ON B.rental_id = C.rental_id
+INNER JOIN inventory D ON C.inventory_id = D.inventory_id
+INNER JOIN film_category E ON D.film_id = E.film_id
+INNER JOIN category F ON E.category_id = F.category_id 
+WHERE A.customer_id IN (148,526,178,137,144)
+GROUP BY genre
+ORDER BY frequency DESC
+LIMIT 5 
