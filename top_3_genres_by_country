@@ -1,0 +1,52 @@
+# Top 3 Genres by Revenue
+
+For China 
+
+SELECT I.name AS Genre, COUNT(E.rental_id), SUM(E.amount) AS Total_Revenue
+FROM country A
+INNER JOIN city B ON A.country_id = B.country_id
+INNER JOIN address C ON B.city_id = C.city_id
+INNER JOIN customer D ON C.address_id = D.address_id
+INNER JOIN payment E ON D.customer_id = E.customer_id
+INNER JOIN rental F ON E.rental_id = F.rental_id
+INNER JOIN inventory G ON F.inventory_id = G.inventory_id
+INNER JOIN film_category H ON G.film_id = H.film_id
+INNER JOIN category I ON H.category_id = i.category_id 
+WHERE country = 'China'
+GROUP BY Genre
+ORDER BY Total_Revenue DESC
+LIMIT 3
+
+For India
+
+SELECT I.name AS Genre, COUNT(E.rental_id), SUM(E.amount) AS Total_Revenue
+FROM country A
+INNER JOIN city B ON A.country_id = B.country_id
+INNER JOIN address C ON B.city_id = C.city_id
+INNER JOIN customer D ON C.address_id = D.address_id
+INNER JOIN payment E ON D.customer_id = E.customer_id
+INNER JOIN rental F ON E.rental_id = F.rental_id
+INNER JOIN inventory G ON F.inventory_id = G.inventory_id
+INNER JOIN film_category H ON G.film_id = H.film_id
+INNER JOIN category I ON H.category_id = i.category_id 
+WHERE country = 'India'
+GROUP BY Genre
+ORDER BY Total_Revenue DESC
+LIMIT 3
+
+For United States
+
+SELECT I.name AS Genre, COUNT(E.rental_id), SUM(E.amount) AS Total_Revenue
+FROM country A
+INNER JOIN city B ON A.country_id = B.country_id
+INNER JOIN address C ON B.city_id = C.city_id
+INNER JOIN customer D ON C.address_id = D.address_id
+INNER JOIN payment E ON D.customer_id = E.customer_id
+INNER JOIN rental F ON E.rental_id = F.rental_id
+INNER JOIN inventory G ON F.inventory_id = G.inventory_id
+INNER JOIN film_category H ON G.film_id = H.film_id
+INNER JOIN category I ON H.category_id = i.category_id 
+WHERE country = 'United States'
+GROUP BY Genre
+ORDER BY Total_Revenue DESC
+LIMIT 3
