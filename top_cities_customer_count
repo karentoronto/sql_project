@@ -1,0 +1,12 @@
+# Top 10 cities by customer count
+
+SELECT D.country, C.city, COUNT(A.customer_id) AS Number_of_Customers
+FROM CUSTOMER A
+INNER JOIN ADDRESS B ON A.address_id = B.address_id
+INNER JOIN CITY C ON B.city_id = C.city_id 
+INNER JOIN COUNTRY D ON C.country_id = D.country_id 
+WHERE COUNTRY IN ('India','China','United States',
+		'Japan','Mexico','Russian Federation','Brazil', 'Philippines','Turkey','Indonesia')
+GROUP BY D.country, C.city
+ORDER BY Number_of_Customers DESC
+LIMIT 10
