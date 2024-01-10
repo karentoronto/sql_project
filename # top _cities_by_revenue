@@ -1,4 +1,4 @@
-# Top 10 Cities by Revenue 
+Top 10 Cities by Revenue 
 
 SELECT  
 	B.city,C.country,
